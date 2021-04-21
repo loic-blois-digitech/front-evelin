@@ -6,10 +6,10 @@ This project has been created using **webpack-cli**, you can now run
 npm run build
 ```
 
-or
+to bundle your application in mode prod
 
 ```
-yarn build
+npm run start
 ```
 
-to bundle your application
+to deploy application in mode dev

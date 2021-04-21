@@ -1,8 +1,12 @@
     const path = require('path');
+    const webpack = require('webpack');
+    const polyfill = require("babel-polyfill");
     const HtmlWebpackPlugin = require('html-webpack-plugin');
 
     module.exports = {
         entry: {
+            // polyfill permet de résoudre l'erreur: Uncaught ReferenceError: regeneratorRuntime is not defined
+            polyfill: "babel-polyfill",
             index: {
                 import: path.resolve(__dirname, 'src') + '/index.js',
                 dependOn: 'shared',
@@ -21,6 +25,10 @@
                 bodyHtmlSnippet: '<div id="root"></div>',
                 title: 'Evelin - Login',
                 favicon: "./src/assets/ico/favicon.ico",
+            }),
+            // permet de résourdre l'erreur: Uncaught ReferenceError: process is not defined
+            new webpack.ProvidePlugin({
+                process: 'process/browser',
             }),
         ],
         module: {
